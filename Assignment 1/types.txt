@@ -1,0 +1,25 @@
+# Assignment 1, Task 3
+# Name: Rinchen Lekchen Gyeltshen 
+# Collaborators: <NAME_1, NAME_2>
+# Time Spent: 0:15 hrs
+
+Part 1
+
+1. width/3 = 6.667 (float) 
+2. width/2.0 = 10.0 (float)
+3. height/3 = 3 (int)
+4. height//3.0 = 3.0 (float) 
+5. height*width/2 = 90.0 (float) 
+6. width/2*height = 0.225(float)
+7. 3+4*5 = 23 (integer) 
+8. 3//4+4*5 = 20 (integer)
+9. 3/4+4*5 = 20.75 (float) 
+10. 3/4.0+4*5 = 20.75 (float)
+
+Part 2
+
+1. 42 (int)
+2. 8 (int)
+3. 63 (int)
+4. 67.47916666666667 (float)
+5. 2352.901041666667 (float)
