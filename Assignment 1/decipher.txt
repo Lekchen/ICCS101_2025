@@ -1,0 +1,40 @@
+# Assignment 1, Task 4
+# Name: Rinchen Lekchen Gyeltshen
+# Collaborators: <NAME_1, NAME_2>
+# Time Spent: 0:15 hrs
+
+Program 1 : Find all settings of x and y of type bool that will cause this code to print True.
+x = ...
+y = ...
+print(not x or y)
+
+Answer:
+1.
+x = True
+y = True
+print(not x or y) = True
+
+2. 
+x = False
+y = True
+print(not x or y) = True
+
+3. 
+x = False
+y = False
+print(not x or y) = True
+
+
+Program 2: Find the smallest integer x such that the following code will print True.
+x = ... 
+print(x >= 42 and (x%20) // 10 == 1)
+
+Answer:
+From condition 2;
+	(x%20) should be greater or equal to 10 and less than 20,
+From condition 1;
+	x cannot be less than 42
+from comparing the above two conditions; 
+	x should be greater than 50 because (x%20) will be less than 10 if the x is less than 50,
+	so (50%20) // 10 == 1 and it is greater than 42
+Therefore, 50 is the smallest integer that satisfice both the conditions.
