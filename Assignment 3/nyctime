@@ -1,0 +1,15 @@
+# Assignment 3, Task 6
+# Name: Rinchne Lekchen Gyeltshen
+# Collaborators: John Nonexistent
+# Time Spent: 0:15 hrs
+def nycHour(bkkHour: int) -> str:
+    time = 0
+    if bkkHour < 12:
+        time += bkkHour + 1
+        time = str(time)
+        nyctime = time + "am"
+    elif bkkHour >= 12:
+        time += bkkHour - 11
+        time = str(time)
+        nyctime = time + "pm"
+    return nyctime
