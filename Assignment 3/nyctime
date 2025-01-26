@@ -2,14 +2,25 @@
 # Name: Rinchne Lekchen Gyeltshen
 # Collaborators: John Nonexistent
 # Time Spent: 0:15 hrs
+# In this question 23 - 11 is "pm" and 12 - 22 is "am"
 def nycHour(bkkHour: int) -> str:
     time = 0
-    if bkkHour < 12:
+    period = str()
+    if bkkHour < 11:
+        # As bkkHour is 1 less than the one needed
         time += bkkHour + 1
         time = str(time)
-        nyctime = time + "am"
-    elif bkkHour >= 12:
+        period += "pm"
+        nyctime = time + period
+    elif 11 <= bkkHour < 23:
+        # As bkkHour is 11 more than the one needed
         time += bkkHour - 11
         time = str(time)
-        nyctime = time + "pm"
+        period += "am"
+        nyctime = time + period
+    elif bkkHour == 23:
+        time += 12
+        time = str(time)
+        period = "pm"
+        nyctime = time + period
     return nyctime
