@@ -1,0 +1,13 @@
+# Assignment 3, Task 7
+# Name: Rinchne Lekchen Gyeltshen
+# Collaborators: John Nonexistent
+# Time Spent: 0:15 hrs
+def got_table(you: int, date: int) -> str:
+    got = str()
+    if you <= 2 or date <= 2:
+        got = "no"
+    elif (2 < you < 8) and (2 < date < 8):
+        got = "maybe"
+    elif (you >= 8 and date > 2) or (you > 2 and date >= 8):
+        got = "yes"
+    return got
