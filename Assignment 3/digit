@@ -1,0 +1,9 @@
+# Assignment 3, Task 3
+# Name: Rinchne Lekchen Gyeltshen
+# Collaborators: John Nonexistent
+# Time Spent: 0:10 hrs
+def kthDigit(x: int, b: int, k: int) -> int:
+# will give remove and make the position of k to the leftmost. 
+    position = b ** k
+    kth_digit = (x//position) % b 
+    return kth_digit 
