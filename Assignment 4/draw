@@ -1,0 +1,21 @@
+# Assignment 4, Task 3
+# Name: Rinchen Lekchen Gyeltshen
+# Collaborators: John Nonexistent
+# Time Spent: 00:10 hrs
+# subtask 1
+def triangle(k:int)->None:
+    total = list()
+    for i in range(1, k + 1):
+        total.append("#" * (k - i) + "*" * (2 * i - 1) + "#" * (k - i))
+    for line in total:
+        print(line)
+
+# subtask 2
+def diamond(k:int)->None:
+    total = list()
+    for i in range(1, k + 1):
+        total.append("#" * (k - i + 1) + "*" * (i * 2 - 1) + "#" * (k - i + 1))
+    for i in range(1, k + 1):
+        total.append("#" * i  + "*" * (2 * (k - i) + 1) + "#" * i)
+    for line in total:
+        print(line)
