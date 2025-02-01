@@ -1,0 +1,12 @@
+# Assignment 4, Task 2
+# Name: Rinchen Lekchen Gyeltshen
+# Collaborators: John Nonexistent
+# Time Spent: 00:10 hrs
+def powerLoop(upto:int)-> None:
+    total = list()
+    for n in range(0, upto + 1):
+        key = str(n)
+        value = str((7 ** n) % 97)
+        total.append(key + " " +value)
+    for line in total:
+        print(line)
