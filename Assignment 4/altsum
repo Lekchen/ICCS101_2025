@@ -1,0 +1,15 @@
+# Assignment 4, Task 1
+# Name: Rinchen Lekchen Gyeltshen
+# Collaborators: John Nonexistent
+# Time Spent: 00:10 hrs
+def altSum(lst:list[int])->int:
+    if len(lst) == 0:
+        total = 0
+    elif len(lst) != 0:
+        total = lst[0]
+        for n in range(1, len(lst)):
+            if n % 2 != 0:
+                total += lst[n]
+            else:
+                total -= lst[n]
+    return total
