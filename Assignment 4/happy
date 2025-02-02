@@ -1,0 +1,28 @@
+# Assignment 4, Task 6
+# Name: Rinchen Lekchen Gyeltshen
+# Collaborators: John Nonexistent
+# Time Spent: 00:30 hrs
+# subtask 1
+def  sumOfDigitsSquared(n: int)-> int:
+    result = 0
+    n = str(n)
+    for i in n:
+        result += int(i) ** 2
+    return result
+
+#subtask 2
+def isHappy(n: int)-> bool:
+    result = n
+    while result != 1 and result != 4:
+        result = sumOfDigitsSquared(result)
+    return result == 1
+
+#subtask 3
+def kThHappy(k: int)-> int:
+    result = list()
+    num = 1
+    while len(result) < k:
+        if isHappy(num):
+            result.append(num)
+        num += 1
+    return result[k-1]
