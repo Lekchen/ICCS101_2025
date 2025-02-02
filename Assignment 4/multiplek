@@ -1,0 +1,16 @@
+# Assignment 4, Task 5
+# Name: Rinchen Lekchen Gyeltshen
+# Collaborators: John Nonexistent
+# Time Spent: 00:10 hrs
+def allMultiplesOfK(k: int, lst: list[int])-> bool:
+    result = 0
+    length = len(lst)
+    for i in lst:
+        if i%k == 0:
+            result += 1
+        else:
+            result -= 1
+    if length == result:
+        return True
+    else:
+        return False
