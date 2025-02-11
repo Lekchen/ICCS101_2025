@@ -1,0 +1,24 @@
+Task 2
+Write a function better_swap_case(st: str) -> str that takes in a string and returns the input string where each character is adjusted according to the following rules:
+For vowels—that is, "a", "e", "i", "o", "u"—their case remains unchanged
+For other letters of the English alphabet, their case is swapped. That is to say, every lowercase letter is turned into its corresponding uppercase letter and vice versa.
+Each non-letter character is replaced by a space.
+For example:
+better_swap_case('aBC') == 'abc' (Notice that a remains lower case because it's a vowel.)
+better_swap_case('Hello~HuMAN') == 'heLLo humAn' (Every letter has their case swapped aside from the vowels, and the non-letter character ~ is replaced by a space)
+better_swap_case('PythOn1Cs-is!coOl') == 'pYTHON cS iS CoOL'
+(*Hint*: If s is a string, s.isalpha() returns whether s is a letter in the English alphabet.)
+
+Answer:
+def better_swap_case(st: str) -> str:
+    vowels = "aeiouAEIOU"
+    st_1 = str()
+    for i in st:
+        if i.isalpha():
+            if i not in vowels:
+                st_1 += i.swapcase()
+            else:
+                st_1 += i
+        else:
+            st_1 += " "
+    return st_1
