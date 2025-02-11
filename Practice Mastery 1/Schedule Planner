@@ -1,0 +1,16 @@
+Task 4
+Meow, the CEO of Conda Tuna, is generally busy, so her schedule each day is divided into slots, numbered 0, 1, and on. Each slot is either booked for an engagement or reserved for her to nap.
+Every day, Meow makes a list of slot numbers reserved for napping. Her secretary puts together a list of engagements.  For example:
+nap_slots: List[int] = [1, 3, 5] indicates that Meow sets aside Slots 1, 3, and 5 to nap.
+engagements: List[str] =  ['E1', 'E2', 'E3', 'E4'] indicates that Meow has engagements 'E1', 'E2', 'E3', 'E4' on this day.
+Your task is to write a function create_schedule(nap_slots: list[int], engagements: list[str]) -> list[str] that 
+returns a list of strings containing a complete schedule for her day.  In the complete schedule, slots reserved for napping are indicated as *Nap* and real engagements appear in the order provided.  
+We promise that nap_slots will be a list of increasing numbers—and that there is a valid schedule from the given input.
+With the example nap_slots and engagements above, create_schedule should return ['E1', '*Nap*', 'E2', '*Nap', 'E3', '*Nap*', E4'].
+
+Answer:
+def create_schedule(nap_slots: list[int], engagements: list[str]) -> list[str]:
+    result = engagements.copy()
+    for i in nap_slots:
+            result.insert(i, "*Nap*")
+    return result
