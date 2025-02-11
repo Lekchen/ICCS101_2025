@@ -1,0 +1,43 @@
+Task 1 
+Inside a vending machine, there is usually a module that makes change using coins. 
+It calculates, for a given amount, the number of coins of each type to release to the customer. 
+For example, if the machine needs to give change for 15 baht, it might release a 10-baht coin and another 5-baht coin to the customer.
+In general, there can be multiple ways to make change. For example, 19 baht change can be made by one of the following combinations:
+19 one-baht coins
+3 five-baht coins and 4 one-baht coin
+1 ten-baht coin, 1 five-baht coin, 2 two-baht coins
+etc.
+As the customers hate carry a lot of loose change, 
+the vending machine company has come up with a smarter way to give change to reduce the number of coins dispensed. 
+The idea is to always give out a coin with the largest available value first and repeat until the full amount is made.
+
+Our vending machine has an infinite supply of $10$-, $5$-, $2$-, and $1$-baht coins.  
+This means, for example, to make change for $38$, using the largest-valued coin, it would dispense a $10$-baht coin, 
+then another $10$, then another $10$.  At this point, the remaining amount is $8$ (below $10$), so it
+dispenses a $5$, then a $2$, then a $1$.
+You are to write a coinChange(v: int) -> list[int] function that takes a positive integer v (i.e., v is strictly positive) and 
+returns a list of coins dispensed by the method described above to make the amount v.  The list must be ordered from large to small.
+Here are some examples:
+coinChange(38) == [10,10,10,5,2,1]
+coinChange(19) == [10,5,2,2]
+coinChange(11) == [10,1]
+coinChange(5) == [5]
+coinChange(3) == [2,1]
+
+Answer:
+def coinChange(v: int) -> list[int]:
+    result = list()
+    while v > 0:
+        if v >= 10:
+            result.append(10)
+            v -= 10
+        elif v >= 5:
+            result.append(5)
+            v -= 5
+        elif v >= 2:
+            result.append(2)
+            v -= 2
+        else:
+            result.append(1)
+            v -= 1
+    return result
