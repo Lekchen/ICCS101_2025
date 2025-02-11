@@ -1,0 +1,18 @@
+Task 3
+Every citizen of Condaland has a 15-digit identification number, for example,
+123045607890126. However, not every 15-digit number is a valid identification number. 
+In this problem, you are to write a function valid_id(idnum: str) -> bool 
+that takes a string idnum and returns a Boolean indicating whether the given string is a valid identification number according the rules laid out below.
+To validate a 15-digit number, use the following steps:
+Multiply each digit by its digit position. The digit position of a digit is how far it is from the right end. The rightmost digit has digit position 1, the 2nd rightmost digit has digit position 2, and so on.
+Add up the products (digit * digit position) of all the digits _except_ for the rightmost digit. Call this sum c
+Let a = (11 - c%11)%10. The 15-digit number is valid if the rightmost digit is the same as a.
+
+Answer:
+def valid_id(idnum: str) -> bool:
+    position = 15
+    total = -int(idnum[-1])
+    for i in range(len(idnum)):
+        digit = int(idnum[i])
+        total += digit * (position - i)
+    return int(idnum[-1]) == (11 - total%11)%10
