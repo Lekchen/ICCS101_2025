@@ -1,0 +1,11 @@
+# Assignment 5, Task 3
+# Name: Rinchen Lekchen Gyeltshen
+# Collaborators: John Nonexistent
+# Time Spent: 0:20 hrs
+def  enc(msg: str, key: int)-> str:
+    result = [""] * key
+    for i, j in enumerate(msg):
+        col = i % key
+        result[col] += j
+    answer = "".join(result)
+    return answer
