@@ -1,0 +1,42 @@
+# Assignment 5, Task 5
+# Name: Rinchen Lekchen Gyeltshen
+# Collaborators: John Nonexistent
+# Time Spent: 0:20 hrs
+def contains_word(grid: list[list[str]], w: str)-> bool:
+    rows = len(grid)
+    cols = len(grid[0])
+    word_len = len(w)
+    def direction(x, y, direction_x, direction_y):
+        for i in range(word_len):
+            if x < 0 or x >= rows or y < 0 or y >= cols or grid[x][y] != w[i]:
+                return False
+            x += direction_x
+            y += direction_y
+        return True
+    for i in range(rows):
+        for j in range(cols):
+            if (direction(i, j, 1, 0) or
+                direction(i, j, 0, 1) or
+                direction(i, j, 1, 1) or
+                direction(i, j, -1, 1)):
+                return True
+    return False
+def  make_unique(lst: list[str])-> list[str]:
+    return list(set(lst))
+def word_sleuth(grid: list[list[str]], words: list[str]):
+    result = list()
+    for word in words:
+        if contains_word(grid, word):
+            result.append(word)
+    return make_unique(result)
+grid = [
+    ["r","a","w","b","i","t"],
+    ["x","a","y","z","c","h"],
+    ["p","q","b","e","i","e"],
+    ["t","r","s","b","o","g"],
+    ["u","w","x","v","i","t"],
+    ["n","m","r","w","o","t"]
+]
+
+words = ["bog", "moon", "rabbit", "the", "bit", "raw"]
+print(word_sleuth(grid, words))
