@@ -6,3 +6,27 @@ def sort_me(L:List[int]) -> List[int]:
             if L[j] > L[j+1]:
                 L[j], L[j+1] = L[j+1], L[j]
     return L
+
+# returning the second max value
+def second_max(lst:List[int]) -> int:
+    max_val = max(lst)
+    result = list()
+    for i in lst:
+        if i != max_val:
+        	result.append(i)
+    return max(result)
+
+# reversing the value of tuples
+def reverse_tuple(t: Tuple[int, ...]) -> Tuple[int, ...]:
+    result = t[::-1]
+    return result
+# sorting a list of words with respect to its length and if legth is eqaul then with alphabet order
+def sort_by_length(words:List[str]) -> List[str]:
+    result = list()
+    for word in words:
+        result.append((len(word), word))
+    length_and_words = sorted(result)
+    ans = []
+    for length, word in length_and_words:
+        ans.append(word)
+    return ans
