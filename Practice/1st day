@@ -1,0 +1,8 @@
+# how to sort without using the sort function 
+def sort_me(L:List[int]) -> List[int]:
+    n = len(L) 
+    for i in range(n):
+        for j in range(n-i-1): # we use the i to see if the next number is greater or not and if it is then we switch them (until nex number is greater) 
+            if L[j] > L[j+1]:
+                L[j], L[j+1] = L[j+1], L[j]
+    return L
