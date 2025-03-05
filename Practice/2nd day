@@ -1,0 +1,17 @@
+"""
+Write a function gravity(board: List[List[str]]) -> List[List[str]] 
+that moves all the 1’s downwards so they are stacked at the bottom of the board. 
+This is like like applying gravity to the board and all the 1’s are pulled down. 
+Your gravity function should return a new board representing the input board after applying the gravity.
+"""
+def gravity(board: List[List[str]]) -> List[List[str]]:
+  N = len(board)
+  for col in range(N):
+    last_index = N-1
+    for row in range(N -1, -1, -1):
+      if board[row][col] == "1":
+        board[last_index][col] = "1"
+        if last_index != row:
+          board[row][col] = " "
+        last_index -= 1
+  return board
