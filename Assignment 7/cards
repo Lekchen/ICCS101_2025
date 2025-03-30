@@ -1,0 +1,54 @@
+ Assignment 07, Task 2
+# Name: Rinchen Lekchen Gyeltshen
+# Collaborators: John Nonexistent
+# Time Spent: 03:00 hrs
+# subTask 1
+Hand = set[tuple[str, str]]
+def is_straight_flush(h: Hand)-> bool:
+    suits = {card[0] for card in h}
+    rank = {card[1] for card in h}
+    if len(suits) != 1:
+        return False
+    high_rank_order =["A", "K", "Q", "J", "10", "9", "8", "7", "6", "5", "4", "3", "2"]
+    low_rank_order = ["5", "4", "3", "2", "A"]
+    rank_values = sorted([high_rank_order.index(r) for r in rank if r in high_rank_order])
+    return rank_values == list(range(rank_values[0], rank_values[0] + 5)) or sorted(rank) == high_rank_order
+def is_four_of_a_kind(h: Hand) -> bool:
+    ranks = [card[1] for card in h]
+    rank_counts = {rank: ranks.count(rank) for rank in ranks}
+    return 4 in rank_counts.values()
+def is_full_house(h: Hand) -> bool:
+    ranks = [card[1] for card in h]
+    rank_counts = {rank: ranks.count(rank) for rank in ranks}
+    return sorted(rank_counts.values()) == [2, 3]
+def is_two_pair(h: Hand) -> bool:
+    ranks = [card[1] for card in h]
+    rank_counts = {rank: ranks.count(rank) for rank in ranks}
+    return list(rank_counts.values()).count(2) == 2
+
+# Subtask 2
+def all_hands():
+    suits = ["Club", "Diamond", "Heart", "Spade"]
+    ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+    deck = [(suit, rank) for suit in suits for rank in ranks]
+    return [set(comb) for comb in generate_combinations(deck, 5)]
+def generate_combinations(cards, k):
+    if k == 0:
+        return [[]]
+    if len(cards) < k:
+        return []
+    without_first = generate_combinations(cards[1:], k)
+    with_first = [comb + [cards[0]] for comb in generate_combinations(cards[1:], k - 1)]
+    return without_first + with_first
+def all_straight_flush():
+    all_hands_list = all_hands()
+    return [hand for hand in all_hands_list if is_straight_flush(hand)]
+def all_four_of_a_kind():
+    all_hands_list = all_hands()
+    return [hand for hand in all_hands_list if is_four_of_a_kind(hand)]
+def all_full_house():
+    all_hands_list = all_hands()
+    return [hand for hand in all_hands_list if is_full_house(hand)]
+def all_two_pair():
+    all_hands_list = all_hands()
+    return [hand for hand in all_hands_list if is_two_pair(hand)]
