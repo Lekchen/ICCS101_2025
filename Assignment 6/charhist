@@ -1,0 +1,19 @@
+# Assignment 6, Task 1
+# Name: Rinchen Lekchen Gyeltshen
+# Collaborators: John Nonexistent
+# Time Spent: 0:20 hrs
+def charHistogram(filename: str) -> None:
+    with open(filename, "r") as reader:
+        text = reader.read().lower()
+    letter_count = {}
+    for char in text:
+        if char.isalpha():
+            letter_count[char] = letter_count.get(char, 0) + 1
+    letter_list = list(letter_count.items())
+    for i in range(len(letter_list)):
+        for j in range(i + 1, len(letter_list)):
+            if letter_list[i][1] < letter_list[j][1] or \
+               (letter_list[i][1] == letter_list[j][1] and letter_list[i][0] > letter_list[j][0]):
+                letter_list[i], letter_list[j] = letter_list[j], letter_list[i]
+    for letter, frequency in letter_list:
+        print(f"{letter} {'+' * frequency}")
