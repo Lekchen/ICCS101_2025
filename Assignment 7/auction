@@ -1,0 +1,85 @@
+# Assignment 7, Task 4
+# Name: Rinchen Lekchen Gyeltshen
+# Collaborators: John Nonexistent
+# Time Spent: 04:00 hrs
+# subtask 1
+class Bid:
+    def __init__(self, bid_id, bidder_id, auction):
+        self.bid_id = int(bid_id)
+        self.bidder_id = bidder_id
+        self.auction = auction
+    def __str__(self):
+        return f"Bid(bid_id={self.bid_id}, bidder_id={self.bidder_id}, auction={self.auction})"
+    def __repr__(self):
+        return self.__str__()
+    def __eq__(self, other):
+        return self.bid_id == other.bid_id
+    def __lt__(self, other):
+        return self.bid_id < other.bid_id
+    def __le__(self, other):
+        return self.bid_id <= other.bid_id
+    def __gt__(self, other):
+        return self.bid_id > other.bid_id
+    def __ge__(self, other):
+        return self.bid_id >= other.bid_id
+class Auction:
+    def __init__(self, auction):
+        self.auction = auction
+        self.bids = []
+        self.price = 1.0
+        self.winner = None
+
+    def placeBid(self, bidder_id):
+        bid_id = len(self.bids)
+        bid = Bid(bid_id, bidder_id, self.auction)
+        self.bids.append(bid)
+        self.price += 1.5
+        self.winner = bidder_id
+        return bid
+    def __str__(self):
+        return f"Auction(auction={self.auction}, price={self.price}, winner={self.winner})"
+    def __repr__(self):
+        return self.__str__()
+
+# Subtask 2
+import csv
+from typing import List
+
+def CSV2List(csvFilename: str) -> List[Bid]:
+    bids = []
+    try:
+        with open(csvFilename, 'r') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                bid = Bid(row['bid_id'], row['bidder_id'], row['auction'])
+                bids.append(bid)
+    except FileNotFoundError:
+        print(f"Error: File '{csvFilename}' not found.")
+        return []
+    return sorted(bids)
+
+# Subtask 3
+def mostPopularAuction(bidList: List[Bid]) -> set[str]:
+    if not bidList:
+        return set()
+    auction_bidder_count = {}
+    for bid in bidList:
+        auction = bid.auction
+        bidder = bid.bidder_id
+        if auction not in auction_bidder_count:
+            auction_bidder_count[auction] = set()
+        auction_bidder_count[auction].add(bidder)
+    max_bidders = max(len(bidders) for bidders in auction_bidder_count.values())
+    return {
+        auction for auction, bidders in auction_bidder_count.items()
+        if len(bidders) == max_bidders
+    }
+def auctionWinners(bidList: List[Bid]) -> dict[str, Auction]:
+    auctions = {}
+    for bid in bidList:
+        auction_id = bid.auction
+        bidder_id = bid.bidder_id
+        if auction_id not in auctions:
+            auctions[auction_id] = Auction(auction_id)
+        auctions[auction_id].placeBid(bidder_id)
+    return auctions
