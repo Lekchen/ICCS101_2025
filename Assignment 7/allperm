@@ -1,0 +1,15 @@
+# Assignment 07, Task 1
+# Name: Rinchen Lekchen Gyeltshen
+# Collaborators: John Nonexistent
+# Time Spent: 0:30 hrs
+
+def all_perm(n: int)-> set[tuple[int]]:
+    if n == 1:
+        return {(1,)}
+    keep = all_perm(n - 1)
+    new_permutation = set()
+    for perm in keep:
+        for i in range(len(perm) + 1):
+            new_tuple = perm[:i] + (n,) + perm[i:]
+            new_permutation.add(new_tuple)
+    return new_permutation
