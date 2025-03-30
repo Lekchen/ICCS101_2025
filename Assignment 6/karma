@@ -1,0 +1,36 @@
+# Assignment 6, Task 3
+# Name: Rinchen Lekchen Gyeltshen
+# Collaborators: John Nonexistent
+# Time Spent: 0:30 hrs
+def keepTabs(actions: list[str]) -> dict[str, int]:
+    ans = make_dict(actions)
+    for i in actions:
+        if "++" in i:
+            name, sign = i.split("++")
+            ans[name] += 1
+        elif '--' in i:
+            name, sign = i.split("--")
+            ans[name] -= 1
+        elif "->" in i:
+            first, second = i.split("->")
+            if first and second not in ans:
+                continue
+            new_val = ans[second] + ans[first]
+            ans[second] = new_val
+            ans[first] -= ans[first]
+    for i in list(ans.keys()):
+        if ans[i] == 0:
+            del ans[i]
+    return ans
+def make_dict(actions):
+    ans = {}
+    for i in actions:
+        if '++' in i:
+            name, sign = i.split("++")
+            ans[name] = 0
+        if '--' in i:
+            name, sign = i.split("--")
+            ans[name] = 0
+        if "->" in i:
+            continue
+    return ans
