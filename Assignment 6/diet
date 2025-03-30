@@ -1,0 +1,40 @@
+# Assignment 6, Task 5
+# Name: Rinchen Lekchen Gyeltshen
+# Collaborators: John Nonexistent
+# Time Spent: 0:40 hrs
+def mealCal(meal: list[str], recipes: list[str], db: list[str]) -> float:
+    nutrient_db = {}
+    for i in db:
+        name_values = i.split(":")
+        name = name_values[0]
+        values = name_values[1].split(",")
+        carb = float(values[0])
+        protein = float(values[1])
+        fat = float(values[2])
+        nutrient_db[name] = (carb, protein, fat)
+    recipe_book = {}
+    for recipe in recipes:
+        name_ingredients = recipe.split(":")
+        name = name_ingredients[0]
+        ingredients = name_ingredients[1].split(",")
+        recipe_book[name] = []
+        for ingredient in ingredients:
+            ingredient_quantity = ingredient.split("*")
+            ingredient_name = ingredient_quantity[0]
+            quantity = int(ingredient_quantity[1])
+            recipe_book[name].append((ingredient_name, quantity))
+    total_calories = 0.0
+    for dish in meal:
+        if dish in recipe_book:
+            dish_calories = 0.0
+            for ingredient, quantity in recipe_book[dish]:
+                # Fetch nutrient data for the ingredient
+                nutrient_data = nutrient_db[ingredient]
+                carb = nutrient_data[0]
+                protein = nutrient_data[1]
+                fat = nutrient_data[2]
+                # Calculate calories for the ingredient
+                ingredient_calories = (carb * 4 + protein * 4 + fat * 9) * quantity
+                dish_calories += ingredient_calories
+            total_calories += dish_calories
+    return total_calories
