@@ -1,0 +1,33 @@
+# Assignment 07, Task 3
+# Name: Rinchen Lekchen Gyeltshen
+# Collaborators: John Nonexistent
+# Time Spent: 01:00 hrs
+class DataFrame:
+    def __init__(self):
+        self.items = []
+    def add(self, x):
+        if isinstance (x, (int, float)):
+            self.items.append(float(x))
+        elif isinstance (x, (list, tuple)):
+            for item in x:
+                self.items.append(float(item))
+    def mean(self):
+        return sum(self.items) / len(self.items)
+    def percentile(self, r):
+        sorted_items = sorted(self.items)
+        index = int((r/100) * len(self.items))
+        if index == len(sorted_items):
+            index -= 1
+        return sorted_items[index]
+    def mode(self):
+        freq_map = {}
+        for item in self.items:
+            freq_map[item] = freq_map.get(item, 0) + 1
+        max_frequency = max(freq_map.values())
+        for key, value in max_frequency():
+            return key
+    def sd(self):
+        mean_value = self.mean()
+        squared_diffs = [(item - mean_value) ** 2 for item in self.items]
+        variance = sum(squared_diffs) / len(self.items)
+        return  variance ** 2
