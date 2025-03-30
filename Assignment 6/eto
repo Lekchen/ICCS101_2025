@@ -1,0 +1,13 @@
+# Assignment 6, Task 4
+# Name: Rinchen Lekchen Gyeltshen
+# Collaborators: John Nonexistent
+# Time Spent: 0:40 hrs
+def eto(lst: list[int])-> list[int]:
+    if not lst:
+        return lst
+    first = lst[0]
+    rest = eto(lst[1:])
+    if first % 2 == 0:
+        return [first] + rest
+    else:
+        return rest + [first]
